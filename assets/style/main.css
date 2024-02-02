@@ -1,0 +1,29 @@
+* {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  text-decoration: none !important;
+  list-style-type: none !important;
+}
+
+.main-nav {
+  box-shadow: -2px 1px 10px 0px rgb(173, 216, 230);
+}
+
+#title-img {
+  height: 200px;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+.news-template {
+  box-shadow: -2px 1px 10px 0px rgb(173, 216, 230);
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.active {
+  color: blue;
+}
