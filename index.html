@@ -13,9 +13,10 @@
 <body>
     <div class="main-nav">
         <div class="container d-flex justify-content-between align-items-center py-3">
-            <a href="#" class="text-black fw-bold fs-4">Ninja News</a>
+            <span onclick="selectCategory('Latest News')" class="text-black cursor-pointer fw-bold fs-4">Ninja
+                News</span>
             <ul class="d-flex mb-0 ps-0 align-items-center gap-4 text-blue fw-semibold">
-                <li class="cursor-pointer" onclick="selectCategory('Ipl')" id="Ipl">Ipl</li>
+                <li class="cursor-pointer" onclick="selectCategory('Sports')" id="Sports">Sports</li>
                 <li class="cursor-pointer" onclick="selectCategory('Finance')" id="Finance">Finance</li>
                 <li class="cursor-pointer" onclick="selectCategory('Politics')" id="Politics">Politics</li>
             </ul>
@@ -29,6 +30,12 @@
         <div class="container py-5">
             <div id="news-container" class="row justify-content-center">
 
+            </div>
+            <div class="d-flex gap-2 justify-content-end">
+                <button onclick="nextPage(0,20)" class="btn btn-secondary">1</button>
+                <button onclick="nextPage(20,40)" class="btn btn-secondary">2</button>
+                <button onclick="nextPage(40,60)" class="btn btn-secondary">3</button>
+                <button onclick="nextPage(60,80)" class="btn btn-secondary">4</button>
             </div>
         </div>
     </main>

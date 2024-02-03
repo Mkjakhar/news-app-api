@@ -1,21 +1,22 @@
 const API_KEY = "54a4f22279564c539fc4b9e96642a710";
 const url = "https://newsapi.org/v2/everything?q=";
-
+let fetchedArticles = [];
 window.addEventListener("load", () => fetchNews("all"));
 async function fetchNews(query) {
   const result = await fetch(`${url}${query}&apiKey=${API_KEY}`);
   const data = await result.json();
-  //   console.log(data.articles);
-  addData(data.articles);
+  fetchedArticles = data.articles; // Store fetched articles globally
+  addData();
 }
-
-function addData(articles) {
+let startPoint = 0;
+let endPoint = 20;
+function addData(articles = fetchedArticles) {
   const newsContainer = document.getElementById("news-container");
   const newsTemplate = document.getElementById("news-card");
 
   newsContainer.innerHTML = "";
 
-  articles.forEach((element) => {
+  articles.slice(startPoint, endPoint).forEach((element) => {
     if (!element.urlToImage) return;
     const cardClone = newsTemplate.content.cloneNode(true);
     fillDataInCards(cardClone, element);
@@ -49,6 +50,8 @@ function selectCategory(cate) {
   selectElem?.classList.remove("active");
   selectElem = currElem;
   selectElem.classList.add("active");
+  startPoint = 0;
+  endPoint = 20;
 }
 
 function search() {
@@ -56,4 +59,12 @@ function search() {
   if (!inputText.value) return;
   fetchNews(inputText.value);
   selectElem.classList.remove("active");
+  startPoint = 0;
+  endPoint = 20;
+}
+function nextPage(a, b) {
+  startPoint = a;
+  endPoint = b;
+  addData();
+  scrollTo(0, 0);
 }
